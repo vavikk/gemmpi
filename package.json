@@ -1,0 +1,13 @@
+ 
+    {
+    "name"          : "mtube",
+    "version"       : "0.0.1",
+    "description"   : "HTML5 Game Server",
+    "main"          : "server.js",
+    "author"        : "vitalie jerebnii",
+    "dependencies"  : {
+        "express"   :"~3.4.4",
+        "socket.io" : "0.9.14"
+         
+                    }
+    }
