@@ -129,3 +129,5 @@ for (var dev in ifaces) {
         }
     });
 }
+//get os type eg: darwin for macos
+console.log(os.type());
