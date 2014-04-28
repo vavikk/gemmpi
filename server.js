@@ -21,6 +21,9 @@ app.get('/remote', function (req, res) {
     res.sendfile(__dirname + '/public/remote.html');
 });
 
+app.get('/game', function (req, res) {
+    res.sendfile(__dirname + '/public/apps/javascript-tetris/index.html');
+});
 
 var ss;
 io.sockets.on('connection', function (socket) {
@@ -67,14 +70,42 @@ io.sockets.on('connection', function (socket) {
     });
     
     //thegame
-    socket.on('right', function (data) {
+    socket.on('app', function (data) {
         
         //ss.emit('right');
-        io.sockets.emit('right');
+		console.log(data.key);
+        io.sockets.emit('app',{key:data.key});
          
         
     });
-
+	/*
+	socket.on('left', function (data) {
+        
+        //ss.emit('right');
+		console.log("left");
+        io.sockets.emit('left');
+         
+        
+    });
+	
+	socket.on('up', function (data) {
+        
+        //ss.emit('right');
+		console.log("up");
+        io.sockets.emit('up');
+         
+        
+    });
+	
+	socket.on('down', function (data) {
+        
+        //ss.emit('right');
+		console.log("down");
+        io.sockets.emit('down');
+         
+        
+    });
+*/
 
 
 

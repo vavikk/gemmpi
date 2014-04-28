@@ -8,6 +8,7 @@
         canvas{
             
             background: grey;
+			 
         }
     </style>
 </head>
@@ -19,15 +20,7 @@
 		<!-- The canvas the project will render to.  If you change its ID, don't forget to change the
 		ID the runtime looks for in the jQuery events above (ready() and cr_sizeCanvas()). -->
 		<canvas id="c2canvas" width="800" height="450">
-			<!-- This text is displayed if the visitor's browser does not support HTML5.
-			You can change it, but it is a good idea to link to a description of a browser
-			and provide some links to download some popular HTML5-compatible browsers. -->
-			<h1>Your browser does not appear to support HTML5.  Try upgrading your browser to the latest version.  <a href="http://www.whatbrowser.org">What is a browser?</a>
-			<br/><br/><a href="http://www.microsoft.com/windows/internet-explorer/default.aspx">Microsoft Internet Explorer</a><br/>
-			<a href="http://www.mozilla.com/firefox/">Mozilla Firefox</a><br/>
-			<a href="http://www.google.com/chrome/">Google Chrome</a><br/>
-			<a href="http://www.apple.com/safari/download/">Apple Safari</a><br/>
-			<a href="http://www.google.com/chromeframe">Google Chrome Frame for Internet Explorer</a><br/></h1>
+		 
 		</canvas>
 		
 	</div>
@@ -38,25 +31,12 @@
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script>
-  var socket = io.connect('http://192.168.4.112:5555/');
+  var socket = io.connect('http://192.168.0.101:5555/');
   socket.emit('remote');
   
-  //Step 1 LOGIN
-  var $submit = $('#submitname');
-
-  $submit.on('click',function(e){
-      e.preventDefault();
-      var name=  $('#name').val();
-      console.log(name)
-      
-      socket.emit('sendingName', { name: name });
-  });  
+   
   
-   socket.on('sendingN', function (data) {
-        var name = data.name;
-        console.log("Glaglagla "+ name);
-        
-    });
+  
     
     socket.on('question',function(data){
         var question = data.question;
@@ -91,8 +71,27 @@
     $( function() { // jQuery *not* required - just be to call onload
         GameController.init( { 
     left: {
-        type: 'joystick'
-    }, 
+		 position: { left: '50%', bottom: '50%' }, 
+      dpad: { 
+            up: {width:"25%", touchStart: function() { 
+             								socket.emit('app',{key:"up"});
+										}	
+              }, 
+            down: {width:"25%", touchStart: function() { 
+             								socket.emit('app',{key:"down"});
+										}	
+              }, 
+            left: {height:"25%", touchStart: function() { 
+             								socket.emit('app',{key:"left"});
+										}	
+              }, 
+            right: {height:"25%", touchStart: function() { 
+             								socket.emit('app',{key:"right"});
+										}	
+              } 
+        } 
+	   
+     } , 
     right: { 
         position: { 
             right: '5%' 
@@ -100,10 +99,10 @@
         type: 'buttons', 
         buttons: [
         { 
-            label: 'R', fontSize: 13, touchStart: function() { 
+            label: 'J', fontSize: 13, touchStart: function() { 
                
-                socket.emit('right');
-            
+                socket.emit('down');
+		
             } 
         }, 
         false, false, false
