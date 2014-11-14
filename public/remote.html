@@ -7,7 +7,7 @@
     <style>
         canvas{
             
-            background: grey;
+            background: #f6c574;
 			 
         }
     </style>
@@ -71,21 +71,21 @@
     $( function() { // jQuery *not* required - just be to call onload
         GameController.init( { 
     left: {
-		 position: { left: '50%', bottom: '50%' }, 
+		 
       dpad: { 
-            up: {width:"25%", touchStart: function() { 
+            up: { touchStart: function() { 
              								socket.emit('app',{key:"up"});
 										}	
               }, 
-            down: {width:"25%", touchStart: function() { 
+            down: {touchStart: function() { 
              								socket.emit('app',{key:"down"});
 										}	
               }, 
-            left: {height:"25%", touchStart: function() { 
+            left: { touchStart: function() { 
              								socket.emit('app',{key:"left"});
 										}	
               }, 
-            right: {height:"25%", touchStart: function() { 
+            right: { touchStart: function() { 
              								socket.emit('app',{key:"right"});
 										}	
               } 
@@ -99,12 +99,21 @@
         type: 'buttons', 
         buttons: [
         { 
-            label: 'J', fontSize: 13, touchStart: function() { 
+            label: 'J', fontSize: 13,stroke:0,backgroundColor:"flat-blue", touchStart: function() { 
                
                 socket.emit('down');
 		
-            } 
-        }, 
+            }
+		
+        },
+            {
+            label: 'J', fontSize: 13,stroke:0,backgroundColor:"flat-red", touchStart: function() { 
+               
+                socket.emit('down');
+		
+            }
+             
+            }, 
         false, false, false
         ] 
     }

@@ -1,0 +1,29 @@
+{
+    "Title"          : "MayApp",
+    "Content"        : "Some text here ",
+    "Author"         : "Author name",
+    "Category"       : "Strategy",
+    "Keywords"       : "bla. bla. vla",
+    "Icon"           : "/icons/myIcon/png",
+    "Images"         :  {
+                            {"url" : "one url"},
+                            {"url" : "one url"},
+                            {"url" : "one url"},
+                            {"url" : "one url"},
+                           
+    },
+    "Video"          :  "urltovideo",
+                        
+    
+    "Version"        : "0.1"                    
+    "Engine"         : "unity",
+    "Multiuser"      : "no",
+    "Controller"    :
+                {
+                    "Mobile"    : "yes",
+                    "Joystick"  : "yes"
+                },
+
+
+
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>sq</title>
+<style>
+    .squares{
+        display: block;
+        border: 1px solid blue;
+        width: 60px;
+        padding: 10px;    
+    }
+    .sq{
+     float: left;
+     margin-right: 5px;
+     margin-bottom: 5px;
+     display: block;
+     width: 10px;
+     height: 10px;
+     border: 1px solid green;
+    }
+    
+    .sel{
+        outline: 2px solid green
+        
+    }
+    
+    
+    .cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.cf {
+    *zoom: 1;
+}
+    
+</style>
+</head>
+<body>
+<div class="squares cf">
+    <div class="sq sel first"></div>
+    <div class="sq"></div>
+    <div class="sq"></div>
+    <div class="sq"></div>
+    <div class="sq"></div>
+    <div class="sq"></div>
+    <div class="sq"></div>
+    <div class="sq"></div>
+    <div class="sq last"></div>
+    
+</div> 
+   <br>   
+    <button id="left">L</button>
+    <button id="right">R</button>
+    <hr>
+    <button id="up">U</button>
+    <button id="down">D</button>
+    <hr>
+    
+</body>
+<script src="https://code.jquery.com/jquery.js"></script>
+<script>
+    var square = $('.squares');
+    var rightB = $('#right');
+    var leftB = $('#left');
+    
+    rightB.on('click',function(){
+        var active =$('.sel');
+         
+        if(active.hasClass('last')){  
+            var next = $('.first');    
+        } else{
+            var next = active.next();
+        }
+        $('.sel').removeClass('sel');
+        next.addClass('sel')
+    })
+    leftB.on('click',function(){
+        var active =$('.sel');
+        if(active.hasClass('first')){  
+            var next = $('.last');    
+        } else{
+            var next = active.prev();
+        }
+        
+        $('.sel').removeClass('sel');
+        next.addClass('sel');
+    })
+    
+</script>
+
+
+
+</html>

@@ -31,7 +31,7 @@ io.sockets.on('connection', function (socket) {
     //bigscreen ready
     socket.on("bigscreen", function (data) {
         socket.type = "bigscreen";
-         ss = socket;
+        ss = socket;
         console.log("Screen ready...");
     });
     //remote ready

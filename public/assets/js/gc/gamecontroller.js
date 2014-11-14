@@ -1044,7 +1044,17 @@
 				var textShadowColor;
 				switch( this.backgroundColor )
 				{
-					case 'blue':
+					case 'flat-blue':
+						gradient.addColorStop( 0, '#00aacf' );
+						gradient.addColorStop( 1, '#00aacf' );
+						textShadowColor = '#0A4861';
+						break;
+                    case 'flat-red':
+						gradient.addColorStop( 0, '#fc5652' );
+						gradient.addColorStop( 1, '#fc5652' );
+						textShadowColor = '#0A4861';
+						break;
+                    case 'blue':
 						gradient.addColorStop( 0, 'rgba(123, 181, 197, 0.6)' );
 						gradient.addColorStop( 1, '#105a78' );
 						textShadowColor = '#0A4861';
