@@ -7,7 +7,7 @@
     .squares{
         display: block;
         border: 1px solid blue;
-        width: 60px;
+        width: 70px;
         padding: 10px;    
     }
     .sq{
@@ -56,6 +56,9 @@
     <div class="sq"></div>
     <div class="sq"></div>
     <div class="sq"></div>
+    <div class="sq"></div>
+    <div class="sq"></div>
+    <div class="sq"></div>
     <div class="sq last"></div>
     
 </div> 
@@ -73,6 +76,23 @@
     var square = $('.squares');
     var rightB = $('#right');
     var leftB = $('#left');
+    var downB = $('#down');
+    var ar = [];
+    console.log($( ".sel" ).index(this));
+    $( ".sq" ).each(function( index ) {
+      ar[index] =  $( this );
+    });
+    downB.on('click',function(){
+        var active =$('.sel');
+         
+        if(active.hasClass('last')){  
+            var next = $('.first');    
+        } else{
+            var next = active.next();
+        }
+        $('.sel').removeClass('sel');
+        next.addClass('sel')
+    })
     
     rightB.on('click',function(){
         var active =$('.sel');
