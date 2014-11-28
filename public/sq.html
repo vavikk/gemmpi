@@ -4,26 +4,69 @@
     <meta charset="UTF-8">
     <title>sq</title>
 <style>
+    *, *:before, *:after {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    body{
+     background: #6cc88a;  
+    }
+    .container{
+        max-width: 100%;
+        width: 1260px;
+        margin: 0 auto;
+        display: block;
+        position: relative;  
+        border: 1px solid blue;
+        perspective: 1500px;
+        
+    }
+     
     .squares{
         display: block;
-        border: 1px solid blue;
-        width: 70px;
-        padding: 10px;    
+        list-style: none;
+        padding: 20px 0;
+        margin: 0 auto;
+        width: 100%;
+        text-align: center;
+        position: relative;
+        transition: all 0.5s cubic-bezier(0,0,0.25,1);
+        transform-style: preserve-3d;
+        
     }
-    .sq{
-     float: left;
-     margin-right: 5px;
-     margin-bottom: 5px;
-     display: block;
-     width: 10px;
-     height: 10px;
-     border: 1px solid green;
+    .squares li{
+        display: inline-block;
+        margin: 10px 5px 0 5px;
+        vertical-align: top;
+        height: 250px;
+        width: 250px; 
+        position: relative;
+        border: 1px solid green;
     }
     
+    .squares li .active
+        width: 100%;
+        height: 10px;
+        background: #519667;
+        position: absolute;
+        top: 0;
+        bottom: 0;
     .sel{
         outline: 2px solid green
         
     }
+    
+/** 
+ * EFFECTS     
+ * effects used to load apps      
+ */   
+    .view-full  {
+        -webkit-transform: translateZ(-1500px);
+        
+    }
+    
+    
     
     
     .cf:before,
@@ -47,29 +90,43 @@
 </style>
 </head>
 <body>
-<div class="squares cf">
-    <div class="sq sel first"></div>
-    <div class="sq"></div>
-    <div class="sq"></div>
-    <div class="sq"></div>
-    <div class="sq"></div>
-    <div class="sq"></div>
-    <div class="sq"></div>
-    <div class="sq"></div>
-    <div class="sq"></div>
-    <div class="sq"></div>
-    <div class="sq"></div>
-    <div class="sq last"></div>
+<div class="container">
+ 
+<ul class="squares cf">
+    <li class="sel"><img src="http://placehold.it/250x250"></li>
+    <li >
+         
+        <span class="active"> </span>    
+    </li>
+    <li ><img src="http://placehold.it/250x250"></li>
+    <li ><img src="http://placehold.it/250x250"></li>
+    <li ><img src="http://placehold.it/250x250"></li>
+    <li ><img src="http://placehold.it/250x250"></li>
+    <li ><img src="http://placehold.it/250x250"></li>
+    <li ><img src="http://placehold.it/250x250"></li>
+    <li ><img src="http://placehold.it/250x250"></li>
+    <li ><img src="http://placehold.it/250x250"></li>
+    <li ><img src="http://placehold.it/250x250"></li>
+    <li ><img src="http://placehold.it/250x250"></li>
     
-</div> 
-   <br>   
+</ul> 
+   <br>
+    <button id="start">Start</button>  
+     <hr> 
     <button id="left">L</button>
     <button id="right">R</button>
     <hr>
     <button id="up">U</button>
     <button id="down">D</button>
     <hr>
+</div>
+
+<div class="white-background-box">
     
+    zum
+    
+</div>
+
 </body>
 <script src="https://code.jquery.com/jquery.js"></script>
 <script>
@@ -77,45 +134,84 @@
     var rightB = $('#right');
     var leftB = $('#left');
     var downB = $('#down');
+    var startB = $('#start');
+    var upB = $('#up');
     var ar = [];
-    console.log($( ".sel" ).index(this));
+    var totalItems = 12
+    var itemsInRow = 4;
+    
+    
+    
+    var setItemsInRow = function() {
+        var squares_width = $( window ).width();
+        
+        if( squares_width < 1070 && squares_width > 800 ) {
+            itemsInRow = 3;    
+        } 
+        else if ( squares_width < 800 && squares_width > 541 ) {
+            itemsInRow = 2;
+        }
+        else if ( squares_width < 541 ) {
+            itemsInRow = 1;
+        }
+    
+    }
+    
+    setItemsInRow();
+     
+    
     $( ".sq" ).each(function( index ) {
       ar[index] =  $( this );
     });
+    
+    startB.on('click',function(){
+        square.addClass('view-full');
+        console.log("yo")
+    })
+    
     downB.on('click',function(){
         var active =$('.sel');
-         
-        if(active.hasClass('last')){  
-            var next = $('.first');    
-        } else{
-            var next = active.next();
-        }
-        $('.sel').removeClass('sel');
-        next.addClass('sel')
+        var activeIndex = active.index();
+        if(activeIndex < totalItems - itemsInRow ){ 
+            var nextIndex = activeIndex + itemsInRow;
+            var next = $( "li:eq("+nextIndex+")" ) ;
+            $('.sel').removeClass('sel');
+            next.addClass('sel')    
+        }  
+    })
+    upB.on('click',function(){
+        var active =$('.sel');
+        var activeIndex = active.index();
+        if(activeIndex >= itemsInRow ){ 
+            var nextIndex = activeIndex - itemsInRow;
+            var next = $( "li:eq("+nextIndex+")" ) ;
+            $('.sel').removeClass('sel');
+            next.addClass('sel')    
+        }  
     })
     
     rightB.on('click',function(){
         var active =$('.sel');
          
-        if(active.hasClass('last')){  
-            var next = $('.first');    
-        } else{
+        if(!active.is("li:last-child")){  
             var next = active.next();
-        }
-        $('.sel').removeClass('sel');
-        next.addClass('sel')
+            $('.sel').removeClass('sel');
+            next.addClass('sel')    
+        }  
+        
     })
     leftB.on('click',function(){
         var active =$('.sel');
-        if(active.hasClass('first')){  
-            var next = $('.last');    
-        } else{
+        if(!active.is("li:first-child")){  
             var next = active.prev();
-        }
+            $('.sel').removeClass('sel');
+            next.addClass('sel')    
+        }  
         
-        $('.sel').removeClass('sel');
-        next.addClass('sel');
+       
     })
+    
+    
     
 </script>
 
