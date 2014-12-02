@@ -10,7 +10,10 @@
         box-sizing: border-box;
     }
     body{
-     background: #6cc88a;  
+     background: #6cc88a; 
+     position: relative;
+     padding:0;
+    margin:0;
     }
     .container{
         max-width: 100%;
@@ -18,7 +21,6 @@
         margin: 0 auto;
         display: block;
         position: relative;  
-        border: 1px solid blue;
         perspective: 1500px;
         
     }
@@ -31,7 +33,6 @@
         width: 100%;
         text-align: center;
         position: relative;
-        transition: all 0.5s cubic-bezier(0,0,0.25,1);
         transform-style: preserve-3d;
         
     }
@@ -42,50 +43,86 @@
         height: 250px;
         width: 250px; 
         position: relative;
-        border: 1px solid green;
     }
     
-    .squares li .active
+    .squares li .loader{
+        display: block;
         width: 100%;
-        height: 10px;
+        height: 0px;
         background: #519667;
         position: absolute;
-        top: 0;
+        left: 0;
         bottom: 0;
+         
+    }
+    .squares li .isLoaded{
+        
+        height: 250px!important;
+        
+         
+    }
+    
     .sel{
-        outline: 2px solid green
-        
+        outline: 4px solid #00aacf;
+        transition: all .3s cubic-bezier(0,0,0.25,1);
     }
-    
-/** 
- * EFFECTS     
- * effects used to load apps      
- */   
-    .view-full  {
-        -webkit-transform: translateZ(-1500px);
-        
+    .sel-out{
+       outline-color: transparent;
+   
     }
-    
+ 
+        
     
     
     
     .cf:before,
-.cf:after {
-    content: " "; /* 1 */
-    display: table; /* 2 */
-}
+    .cf:after {
+        content: " "; /* 1 */
+        display: table; /* 2 */
+    }
 
-.cf:after {
-    clear: both;
-}
+    .cf:after {
+        clear: both;
+    }
 
-/**
- * For IE 6/7 only
- * Include this rule to trigger hasLayout and contain floats.
- */
-.cf {
-    *zoom: 1;
+    #fake_square{
+        margin: 10px 5px 0 5px; 
+        width: 250px; 
+        height: 250px; 
+        display:block;
+        position:absolute; 
+        background:#519667;   
+        
+    }
+    
+    .white-background-box{
+        display: block;
+        width: 100%;
+        height: 0px;
+        background: #fff;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        z-index: 9999;
+                
+    }
+    
+    
+.ajax-loader {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto; /* presto! */
 }
+    #buttons{
+     position: absolute;
+     display: block;
+     top: 40px;
+     left: 60px;
+        
+    }
     
 </style>
 </head>
@@ -93,24 +130,73 @@
 <div class="container">
  
 <ul class="squares cf">
-    <li class="sel"><img src="http://placehold.it/250x250"></li>
+    <li class="sel">
+        <img src="http://dummyimage.com/250x250/000/fff ">
+        <span class="loader"> </span>    </li>
     <li >
-         
-        <span class="active"> </span>    
+        <img src="http://placehold.it/250x250">
+        <span class="loader"> </span>    
     </li>
-    <li ><img src="http://placehold.it/250x250"></li>
-    <li ><img src="http://placehold.it/250x250"></li>
-    <li ><img src="http://placehold.it/250x250"></li>
-    <li ><img src="http://placehold.it/250x250"></li>
-    <li ><img src="http://placehold.it/250x250"></li>
-    <li ><img src="http://placehold.it/250x250"></li>
-    <li ><img src="http://placehold.it/250x250"></li>
-    <li ><img src="http://placehold.it/250x250"></li>
-    <li ><img src="http://placehold.it/250x250"></li>
-    <li ><img src="http://placehold.it/250x250"></li>
+    <li>
+        <img src="http://placehold.it/250x250">
+        <span class="loader"> </span>    
+    </li>
+    <li>
+        <img src="http://placehold.it/250x250">
+        <span class="loader"> </span>    
+    </li>
+    <li>
+        <img src="http://placehold.it/250x250">
+        <span class="loader"> </span>    
+    </li>
+    <li>
+        <img src="http://placehold.it/250x250">
+        <span class="loader"> </span>    
+    </li>
+    <li>
+        <img src="http://placehold.it/250x250">
+        <span class="loader"> </span>    
+    </li>
+    <li>
+        <img src="http://placehold.it/250x250">
+        <span class="loader"> </span>    
+    </li>
+    <li>
+        <img src="http://placehold.it/250x250">
+        <span class="loader"> </span>    
+    </li>
+    <li>
+        <img src="http://placehold.it/250x250">
+        <span class="loader"> </span>    
+    </li>
+    <li>
+        <img src="http://placehold.it/250x250">
+        <span class="loader"> </span>    
+    </li>
+    <li>
+        <img src="http://placehold.it/250x250">
+        <span class="loader"> </span>    
+    </li>
+    <li>
+        <img src="http://placehold.it/250x250">
+        <span class="loader"> </span>    
+    </li>
+    <li>
+        <img src="http://placehold.it/250x250">
+        <span class="loader"> </span>    
+    </li>
+    <li>
+        <img src="http://placehold.it/250x250">
+        <span class="loader"> </span>    
+    </li>
+    <li>
+        <img src="http://placehold.it/250x250">
+        <span class="loader"> </span>    
+    </li>
     
 </ul> 
    <br>
+   <div id="buttons">
     <button id="start">Start</button>  
      <hr> 
     <button id="left">L</button>
@@ -119,18 +205,20 @@
     <button id="up">U</button>
     <button id="down">D</button>
     <hr>
+    </div>
 </div>
 
 <div class="white-background-box">
     
-    zum
+    <img src="assets/img/Preloader_3.gif" alt="" class="ajax-loader">
     
 </div>
 
 </body>
 <script src="https://code.jquery.com/jquery.js"></script>
+<script src="assets/js/velocity.min.js"></script>
 <script>
-    var square = $('.squares');
+    var squares = $('.squares');
     var rightB = $('#right');
     var leftB = $('#left');
     var downB = $('#down');
@@ -142,7 +230,7 @@
     
     
     
-    var setItemsInRow = function() {
+    var set_ItemsInRow = function() {
         var squares_width = $( window ).width();
         
         if( squares_width < 1070 && squares_width > 800 ) {
@@ -157,16 +245,93 @@
     
     }
     
-    setItemsInRow();
+    set_ItemsInRow();
      
-    
+    // indexing the square
     $( ".sq" ).each(function( index ) {
       ar[index] =  $( this );
     });
     
+    
+    
     startB.on('click',function(){
-        square.addClass('view-full');
-        console.log("yo")
+        var active =$('.sel');
+        //squares.addClass('view-full');
+        
+           
+        active
+          
+            .addClass("sel-out")
+            .find(".loader")
+                .velocity({ height:250 }, { delay:30, duration:1500,easing:[ 0,0,.25,1], complete: 
+                    function() { 
+                                                
+                        var position = active.position();
+                        $('body').append('<div id="fake_square" style=" top: '+position.top +'px; left: '+position.left+'px;"></div>');
+                        active.css("display","none");                         
+                        squares.velocity(
+                            { 
+                                translateZ:"-1250" 
+                            }, 
+                                
+                            { 
+                                duration: 500,
+                                easing:[ 0,0,.25,1]
+                            }
+                        ); 
+                        $('#fake_square')
+                            .velocity(
+                                { 
+                                    rotateX: "180deg",
+                                    height:"100%",
+                                    width: "100%", 
+                                    top:0, 
+                                    left:0, 
+                                    margin:0 
+                                }, 
+                                { 
+                                    delay:0, 
+                                    duration: 500,
+                                    easing:[ 0,0,.25,1],
+                                    complete: 
+                                        function() { 
+                                            $('#fake_square').velocity(
+                                                { 
+                                                    backgroundColor: "#000"
+                                                }, 
+
+                                                { 
+                                                    duration: 2600,
+                                                    easing:[ 0,0,.25,1]
+                                                }
+                                            ); 
+                                            $('.white-background-box').velocity(
+                                                { 
+                                                    height: "100%" 
+                                                }, 
+
+                                                { 
+                                                    duration: 500,
+                                                    easing:[ .8,0,.25,1]
+                                                }
+                                            ); 
+                                        
+                                        } 
+                                }
+                             );       
+                        
+                        
+                             
+                                                                          
+                                                                  
+                                                
+                   
+                    } }) 
+                
+                //.velocity({ rotateY:"180deg" }, {   duration:1500, easing:[ 0,0,.25,1] }); 
+                   
+       
+                
     })
     
     downB.on('click',function(){
