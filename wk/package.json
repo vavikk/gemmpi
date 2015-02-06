@@ -1,0 +1,9 @@
+{
+	"name": "Gemmpi",
+	"main": "index.html",
+    "dependencies"  : {
+        
+        "socket.io" : "0.9.14"
+         
+                    }
+}

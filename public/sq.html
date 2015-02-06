@@ -108,19 +108,20 @@
     }
     
     
-.ajax-loader {
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto; /* presto! */
-}
+    .ajax-loader {
+      position: absolute;
+      left: 0;
+      top: 0%;
+      right: 0;
+      bottom: 0;
+      margin: auto; /* presto! */
+      opacity: 0;    
+    }
     #buttons{
      position: absolute;
      display: block;
      top: 40px;
-     left: 60px;
+     left: 10px;
         
     }
     
@@ -210,7 +211,7 @@
 
 <div class="white-background-box">
     
-    <img src="assets/img/Preloader_3.gif" alt="" class="ajax-loader">
+    
     
 </div>
 
@@ -267,7 +268,7 @@
                     function() { 
                                                 
                         var position = active.position();
-                        $('body').append('<div id="fake_square" style=" top: '+position.top +'px; left: '+position.left+'px;"></div>');
+                        $('body').append('<div id="fake_square" style=" top: '+position.top +'px; left: '+position.left+'px;"><img src="assets/img/Preloader_5.gif" alt="" class="ajax-loader"></div>');
                         active.css("display","none");                         
                         squares.velocity(
                             { 
@@ -301,16 +302,32 @@
                                                 }, 
 
                                                 { 
+                                                    delay: 5000,
                                                     duration: 2600,
                                                     easing:[ 0,0,.25,1]
                                                 }
                                             ); 
+                                         
+                                            $('.ajax-loader').velocity(
+                                                { 
+                                                    opacity: 1,
+                                                     
+                                                }, 
+
+                                                { 
+                                                    delay: 350,
+                                                    duration: 500,
+                                                    easing:[ .8,0,.25,1]
+                                                }
+                                            ); 
+                                            
                                             $('.white-background-box').velocity(
                                                 { 
                                                     height: "100%" 
                                                 }, 
 
                                                 { 
+                                                    delay:5000,
                                                     duration: 500,
                                                     easing:[ .8,0,.25,1]
                                                 }
@@ -319,12 +336,7 @@
                                         } 
                                 }
                              );       
-                        
-                        
-                             
-                                                                          
-                                                                  
-                                                
+                  
                    
                     } }) 
                 

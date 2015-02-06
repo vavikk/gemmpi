@@ -26,6 +26,7 @@ app.get('/game', function (req, res) {
 });
 
 var ss;
+console.log("gemmpi");
 io.sockets.on('connection', function (socket) {
      
     //bigscreen ready
