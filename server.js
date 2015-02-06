@@ -5,7 +5,7 @@ var express = require('express'),
     io = require('socket.io').listen(server);
 
 io.set('log level', 1); //less logging info
-
+console.log("pico");
 app.configure(function () {
     app.use(express.static(__dirname + '/app')); // set the static files location /public/img will be /img for users
     app.use(express.logger('dev')); // log every request to the console
